@@ -1,0 +1,39 @@
+Algorithm ANALYZE_SENTENCE
+Variables
+    LENGTH : Integer  // Character counter
+    WORDS : Integer   // Word counter
+    VOWELS : Integer  // Vowel counter
+    IN_WORD : Boolean // Word position
+    CHAR : Character  // Input character
+
+Begin
+    LENGTH ← 0
+    WORDS ← 0
+    VOWELS ← 0
+    IN_WORD ← False
+    
+    Repeat
+        Read(CHAR)  // Read character by character
+        LENGTH ← LENGTH + 1
+        
+        If (CHAR = 'a' OR CHAR = 'e' OR CHAR = 'i' OR CHAR = 'o' OR CHAR = 'u' OR
+            CHAR = 'A' OR CHAR = 'E' OR CHAR = 'I' OR CHAR = 'O' OR CHAR = 'U') Then
+            VOWELS ← VOWELS + 1
+        EndIf
+        
+        If (CHAR = '.') Then
+            Exit
+        EndIf
+        
+        If (CHAR = ' ') Then
+            IN_WORD ← False
+        Else If (NOT IN_WORD) Then
+            WORDS ← WORDS + 1
+            IN_WORD ← True
+        EndIf
+    Until (CHAR = '.')
+    
+    Print("Total length: ", LENGTH)
+    Print("Word count: ", WORDS)
+    Print("Vowel count: ", VOWELS)
+End
